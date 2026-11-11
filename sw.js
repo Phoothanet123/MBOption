@@ -1,1 +1,0 @@
-const CACHE='mb-option-v1';const FILES=['./','./index.html','./manifest.json','./logo-store.png','./logo-mark.png'];self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
