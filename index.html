@@ -86,7 +86,7 @@ const products=[
 let currentUser=null;
 const $=id=>document.getElementById(id);
 const users=()=>JSON.parse(localStorage.getItem('mb_users')||'{}');
-const validEmail=e=>/^[A-Z0-9._%+-]+@gmail\.com$/i.test(String(e ?? '').trim());
+const validEmail=e=>/^[A-Z0-9._%+-]+@gmail.com/i.test(String(e ?? '').trim());
 function showAuth(which){['login','register','forgot'].forEach(x=>$(x+'Form').classList.toggle('hidden',x!==which));}
 function login(){let e=$('loginEmail').value.trim().toLowerCase(),p=$('loginPass').value; if(!validEmail(e))return $('loginMsg').textContent='กรุณาใช้อีเมลที่ลงท้ายด้วย @gmail.com';let u=users()[e];if(!u||u.password!==p)return $('loginMsg').textContent='อีเมลหรือรหัสผ่านไม่ถูกต้อง';currentUser=e;enterStore();}
 function register(){let n=$('regName').value.trim(),e=$('regEmail').value.trim().toLowerCase(),p=$('regPass').value,c=$('regConfirm').value;let m=$('regMsg');if(!n)return m.textContent='กรุณากรอกชื่อ';if(!validEmail(e))return m.textContent='อีเมลต้องลงท้ายด้วย @gmail.com เท่านั้น';if(p.length<8)return m.textContent='รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร';if(p!==c)return m.textContent='ยืนยันรหัสผ่านไม่ตรงกัน';let all=users();if(all[e])return m.textContent='อีเมลนี้มีบัญชีแล้ว';all[e]={name:n,password:p};localStorage.setItem('mb_users',JSON.stringify(all));currentUser=e;enterStore();toast('สมัครสมาชิกสำเร็จ');}
