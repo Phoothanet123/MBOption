@@ -1,0 +1,16 @@
+{
+  "name": "MB Option Fashion Store",
+  "short_name": "MB Option",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#e50914",
+  "icons": [
+    {
+      "src": "logo-mark.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
